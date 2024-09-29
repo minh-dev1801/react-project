@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const Product = ({ product }) => {
+const Product = ({ product, onAddToCart }) => {
   return (
     <li>
       <article className="bg-sub-2-brand rounded-lg overflow-hidden h-full flex flex-col">
@@ -12,7 +12,10 @@ const Product = ({ product }) => {
           <p className="text-sub-3-brand">${product.price}</p>
           <p className="my-3">{product.description}</p>
           <div className="flex justify-end mt-auto">
-            <button className="px-4 py-2 bg-sub-4-brand text-black rounded-md">
+            <button
+              className="px-4 py-2 bg-sub-4-brand text-black rounded-md"
+              onClick={() => onAddToCart(product.id)}
+            >
               Add to Cart
             </button>
           </div>
@@ -28,7 +31,9 @@ Product.propTypes = {
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }),
+  onAddToCart: PropTypes.func.isRequired,
 };
 
 export default Product;
