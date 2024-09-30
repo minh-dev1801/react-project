@@ -4,7 +4,7 @@ import Product from "./Product";
 
 const Shop = ({ onAddToCart }) => {
   return (
-    <section className="w-[70%] mx-auto my-8">
+    <section className="w-[70%] mx-auto my-14">
       <h2 className="text-3xl text-sub-brand uppercase mb-6">
         Elegant Clothing For Everyone
       </h2>

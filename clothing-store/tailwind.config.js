@@ -12,6 +12,7 @@ export default {
         "sub-2-brand": "#5f4e33",
         "sub-3-brand": "#d1b68b",
         "sub-4-brand": "#f4b115",
+        "text-brown": "#4f3807"
       },
       gridTemplateColumns: {
         "auto-fit-minmax": "repeat(auto-fit, minmax(20rem, 1fr))",
