@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 body {
-    font-family: cursive;
-    background: linear-gradient(#31220b, #382e1b);
-    min-height: 100vh;
-    color: #f3e7d4;
+  font-family: cursive;
+  background: linear-gradient(#31220b, #382e1b);
+  min-height: 100vh;
+  color: #f3e7d4;
+}
+
+.modal-backdrop::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
 }

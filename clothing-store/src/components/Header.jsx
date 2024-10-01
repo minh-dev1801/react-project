@@ -2,6 +2,7 @@ import ModalCart from "./ModalCart";
 import { useRef } from "react";
 import { updateCartItemQuantity } from "../store/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Button from "./Button";
 
 const Header = () => {
   const cart = useSelector((state) => state.cart);
@@ -29,12 +30,9 @@ const Header = () => {
           <img src="logo.png" alt="Logo shop" className="w-20 mr-6" />
           <h1 className="uppercase text-brand text-[2.5rem]">Clothing shop</h1>
         </div>
-        <button
-          onClick={handleOpenModalCart}
-          className="px-6 py-2 text-stone-950 bg-brand rounded-md text-xl"
-        >
+        <Button onClick={handleOpenModalCart}>
           Cart ({cart.items.length})
-        </button>
+        </Button>
       </header>
     </>
   );

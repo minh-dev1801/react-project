@@ -20,6 +20,12 @@ const ModalCart = forwardRef(
       };
     });
 
+    const handleBackDropClick = (e) => {
+      if (e.target === dialog.current) {
+        dialog.current.close();
+      }
+    };
+
     let actions;
     if (cartItems.length > 0) {
       actions = (
@@ -37,9 +43,13 @@ const ModalCart = forwardRef(
         </button>
       );
     }
-    
+
     return createPortal(
-      <dialog ref={dialog} className="p-4 bg-sub-3-brand w-[40%]">
+      <dialog
+        ref={dialog}
+        className="p-4 bg-sub-3-brand w-[40%] modal-backdrop"
+        onClick={handleBackDropClick}
+      >
         <h1 className="uppercase text-xl text-text-brown mb-2">{title}</h1>
         {cartItems.length === 0 && <span>No items in cart!</span>}
         {cartItems.length > 0 && (

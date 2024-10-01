@@ -1,17 +1,29 @@
-import { PRODUCT_LIST } from "../product-list";
+import { useSelector } from "react-redux";
 import Product from "./Product";
 
+
 const Shop = () => {
+  const { results, query } = useSelector((state) => state.search);
+
   return (
     <section className="w-[70%] mx-auto my-14">
       <h2 className="text-3xl text-sub-brand uppercase mb-6">
-        Elegant Clothing For Everyone
+        {query.trim() !== ""
+          ? `Search Results for "${query}"`
+          : "Elegant Clothing For Everyone"}
       </h2>
-      <ul className="grid gap-8 grid-cols-auto-fit-minmax">
-        {PRODUCT_LIST.map((product) => (
-          <Product key={product.id} {...product} />
-        ))}
-      </ul>
+
+   
+
+      {query.trim() !== "" && results.length === 0 ? (
+        <p className="text-xl text-center">No products found for &quot;{query}&quot;.</p>
+      ) : (
+        <ul className="grid gap-8 grid-cols-auto-fit-minmax">
+          {results.map((product) => (
+            <Product key={product.id} {...product} />
+          ))}
+        </ul>
+      )}
     </section>
   );
 };
