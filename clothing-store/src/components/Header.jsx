@@ -1,28 +1,28 @@
-import PropTypes from "prop-types";
 import ModalCart from "./ModalCart";
 import { useRef } from "react";
+import { updateCartItemQuantity } from "../store/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-const itemPropType = PropTypes.shape({
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  count: PropTypes.number.isRequired,
-});
-
-const Header = ({ productCart, onDecreaseQuantity, onIncreaseQuantity }) => {
-  const numberItems = productCart.items.length;
+const Header = () => {
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   const modal = useRef();
+
+  const handleUpdateCartItemQuantity = (id, number) => {
+    dispatch(updateCartItemQuantity({ id: id, number: number }));
+  };
   const handleOpenModalCart = () => {
     modal.current.open();
   };
+
   return (
     <>
       <ModalCart
         ref={modal}
-        productCart={productCart}
+        cartItems={cart.items}
+        cartTotal={cart.total}
         title="your cart"
-        onIncreaseQuantity={onIncreaseQuantity}
-        onDecreaseQuantity={onDecreaseQuantity}
+        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
       />
       <header className="flex justify-between items-center pt-12 px-[15%]">
         <div className="flex items-center">
@@ -33,19 +33,11 @@ const Header = ({ productCart, onDecreaseQuantity, onIncreaseQuantity }) => {
           onClick={handleOpenModalCart}
           className="px-6 py-2 text-stone-950 bg-brand rounded-md text-xl"
         >
-          Cart ({numberItems})
+          Cart ({cart.items.length})
         </button>
       </header>
     </>
   );
-};
-
-Header.propTypes = {
-  productCart: PropTypes.shape({
-    items: PropTypes.arrayOf(itemPropType).isRequired,
-  }).isRequired,
-  onIncreaseQuantity: PropTypes.func.isRequired,
-  onDecreaseQuantity: PropTypes.func.isRequired,
 };
 
 export default Header;

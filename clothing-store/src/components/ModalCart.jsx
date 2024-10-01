@@ -4,16 +4,13 @@ import { createPortal } from "react-dom";
 
 const itemPropType = PropTypes.shape({
   id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   count: PropTypes.number.isRequired,
 });
 const ModalCart = forwardRef(
-  ({ productCart, title, onDecreaseQuantity, onIncreaseQuantity }, ref) => {
+  ({ cartItems, title, cartTotal, onUpdateCartItemQuantity }, ref) => {
     const dialog = useRef();
-    const numberProduct = productCart.items.length;
-    const items = productCart.items;
-    const totalPrice = items.reduce((sum, item) => sum + item.price, 0);
 
     useImperativeHandle(ref, () => {
       return {
@@ -22,8 +19,9 @@ const ModalCart = forwardRef(
         },
       };
     });
+
     let actions;
-    if (numberProduct > 0) {
+    if (cartItems.length > 0) {
       actions = (
         <div>
           <button className="mr-4 text-xl">Close</button>
@@ -39,29 +37,30 @@ const ModalCart = forwardRef(
         </button>
       );
     }
+    
     return createPortal(
       <dialog ref={dialog} className="p-4 bg-sub-3-brand w-[40%]">
         <h1 className="uppercase text-xl text-text-brown mb-2">{title}</h1>
-        {numberProduct === 0 && <span>No items in cart!</span>}
-        {numberProduct > 0 && (
+        {cartItems.length === 0 && <span>No items in cart!</span>}
+        {cartItems.length > 0 && (
           <ul>
-            {items.map((item) => (
+            {cartItems.map((item) => (
               <li key={item.id}>
                 <div className="flex justify-between bg-[#fbd392] px-4 py-2 rounded-md">
                   <p>
-                    {item.name} (${item.price.toFixed(2)})
+                    {item.title} (${item.price.toFixed(2)})
                   </p>
                   <div className="flex gap-4">
                     <button
                       className="px-2"
-                      onClick={() => onDecreaseQuantity(item.id)}
+                      onClick={() => onUpdateCartItemQuantity(item.id, -1)}
                     >
                       -
                     </button>
                     <span>{item.count}</span>
                     <button
                       className="px-2"
-                      onClick={() => onIncreaseQuantity(item.id)}
+                      onClick={() => onUpdateCartItemQuantity(item.id, 1)}
                     >
                       +
                     </button>
@@ -74,7 +73,7 @@ const ModalCart = forwardRef(
         <div className="flex justify-end mb-2 mt-4">
           <div>
             <span>Cart Total:</span>{" "}
-            <span className="font-semibold">${totalPrice.toFixed(2)}</span>
+            <span className="font-semibold">${cartTotal.toFixed(2)}</span>
           </div>
         </div>
         <form method="dialog">
@@ -89,12 +88,10 @@ const ModalCart = forwardRef(
 ModalCart.displayName = "ModalCart";
 
 ModalCart.propTypes = {
-  productCart: PropTypes.shape({
-    items: PropTypes.arrayOf(itemPropType).isRequired,
-  }).isRequired,
+  cartItems: PropTypes.arrayOf(itemPropType).isRequired,
   title: PropTypes.string.isRequired,
-  onIncreaseQuantity: PropTypes.func.isRequired,
-  onDecreaseQuantity: PropTypes.func.isRequired,
+  cartTotal: PropTypes.number.isRequired,
+  onUpdateCartItemQuantity: PropTypes.func.isRequired,
 };
 
 export default ModalCart;
