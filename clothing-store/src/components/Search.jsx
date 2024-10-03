@@ -13,7 +13,7 @@ const Search = () => {
   };
 
   return (
-    <div className="px-[15%] mt-8">
+    <div className="px-[5%] mt-8">
       <form onSubmit={handleSearchProduct}>
         <input
           type="text"

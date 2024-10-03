@@ -55,4 +55,36 @@ export const PRODUCT_LIST = [
     description:
       "Our Pioneer Rugged Denim Jacket is a tribute to those who embody the spirit of adventure. Designed with durability and comfort in mind, this jacket is a wardrobe essential for the urban explorer.",
   },
+  {
+    id: 7,
+    image: product_6,
+    title: "Pioneer Rugged Denim Jacket",
+    price: 79.99,
+    description:
+      "Our Pioneer Rugged Denim Jacket is a tribute to those who embody the spirit of adventure. Designed with durability and comfort in mind, this jacket is a wardrobe essential for the urban explorer.",
+  },
+  {
+    id: 8,
+    image: product_6,
+    title: "Pioneer Rugged Denim Jacket",
+    price: 79.99,
+    description:
+      "Our Pioneer Rugged Denim Jacket is a tribute to those who embody the spirit of adventure. Designed with durability and comfort in mind, this jacket is a wardrobe essential for the urban explorer.",
+  },
+  {
+    id: 9,
+    image: product_6,
+    title: "Pioneer Rugged Denim Jacket",
+    price: 79.99,
+    description:
+      "Our Pioneer Rugged Denim Jacket is a tribute to those who embody the spirit of adventure. Designed with durability and comfort in mind, this jacket is a wardrobe essential for the urban explorer.",
+  },
+  {
+    id: 10,
+    image: product_6,
+    title: "Pioneer Rugged Denim Jacket",
+    price: 79.99,
+    description:
+      "Our Pioneer Rugged Denim Jacket is a tribute to those who embody the spirit of adventure. Designed with durability and comfort in mind, this jacket is a wardrobe essential for the urban explorer.",
+  },
 ];
