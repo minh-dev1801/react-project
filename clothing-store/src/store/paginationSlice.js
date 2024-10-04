@@ -6,6 +6,7 @@ const initialState = {
   itemsPerPage: 8,
   totalPages: Math.ceil(PRODUCT_LIST.length / 8),
   itemsList: [...PRODUCT_LIST.slice(0, 8)],
+  pagesAroundCurrent: 2,
 };
 
 const paginationSlice = createSlice({
@@ -16,7 +17,6 @@ const paginationSlice = createSlice({
       state.currentPage = action.payload;
       const indexFirst = state.currentPage * state.itemsPerPage;
       const indexLast = indexFirst - state.itemsPerPage;
-      console.log(indexFirst, indexLast);
       state.itemsList = [...PRODUCT_LIST.slice(indexLast, indexFirst)];
     },
   },

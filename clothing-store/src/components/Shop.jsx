@@ -1,14 +1,16 @@
 import { useSelector } from "react-redux";
 import Product from "./Product";
 
+
 const Shop = () => {
   const { results, query } = useSelector((state) => state.search);
   const { itemsList } = useSelector((state) => state.pagination);
+  
 
-  let dislayProducts;
+  let displayProducts;
   if (query.trim() !== "") {
     if (results.length !== 0) {
-      dislayProducts = (
+      displayProducts = (
         <ul className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {results.map((product) => (
             <Product key={product.id} {...product} />
@@ -16,19 +18,21 @@ const Shop = () => {
         </ul>
       );
     } else {
-      <p className="text-xl text-center">
-        No products found for &quot;{query}&quot;.
-      </p>;
+      displayProducts = (
+        <p className="text-3xl text-center">
+          No products found for &quot;{query}&quot;.
+        </p>
+      );
     }
   } else {
-    dislayProducts = (
+    displayProducts = (
       <ul className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {itemsList.map((product) => (
           <Product key={product.id} {...product} />
         ))}
       </ul>
     );
-  } 
+  }
 
   return (
     <section className="w-[90%] mx-auto my-14">
@@ -37,7 +41,7 @@ const Shop = () => {
           ? `Search Results for "${query}"`
           : "Elegant Clothing For Everyone"}
       </h2>
-      {dislayProducts}
+      {displayProducts}
     </section>
   );
 };
