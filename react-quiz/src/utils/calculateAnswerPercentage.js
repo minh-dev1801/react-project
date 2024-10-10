@@ -1,4 +1,5 @@
 import questions from "../data/questions";
+import { ONE_HUNDRED_PERCENT } from "./constants";
 
 const calculateAnswerPercentage = (userAnswerArray, type) => {
   const totalQuestions = questions.length;
@@ -7,7 +8,7 @@ const calculateAnswerPercentage = (userAnswerArray, type) => {
       return (
         (userAnswerArray.filter((userAnswer) => userAnswer === null).length /
           totalQuestions) *
-        100
+        ONE_HUNDRED_PERCENT
       );
 
     case "correct":
@@ -16,7 +17,7 @@ const calculateAnswerPercentage = (userAnswerArray, type) => {
           (userAnswer, index) => userAnswer === questions[index].answers[0]
         ).length /
           totalQuestions) *
-        100
+        ONE_HUNDRED_PERCENT
       );
 
     default:

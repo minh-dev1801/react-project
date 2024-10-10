@@ -12,7 +12,7 @@ const Summary = ({ userAnswers }) => {
     userAnswers,
     "correct"
   );
-  const incorreactAnswerPercentage =
+  const incorrectAnswerPercentage =
     ONE_HUNDRED_PERCENT - skippedAnswerPercentage - correctAnswerPercentage;
 
   return (
@@ -44,7 +44,7 @@ const Summary = ({ userAnswers }) => {
         </p>
         <p className="flex flex-col">
           <span className="font-roboto-condensed text-[#594276] text-5xl">
-            {incorreactAnswerPercentage}%
+            {incorrectAnswerPercentage}%
           </span>
           <span className="uppercase font-roboto-condensed text-[#30273a] text-sm tracking-[0.1rem] mt-2">
             answered incorrectly
@@ -52,15 +52,27 @@ const Summary = ({ userAnswers }) => {
         </p>
       </div>
       <ol>
-        {userAnswers.map((answer, index) => (
-          <li key={questions[index].id} className="my-8">
-            <h3 className="font-roboto-condensed rounded-full bg-[#2c203d] w-8 h-8 text-[#d8cde8] flex justify-center items-center text-lg mx-auto">
-              {index + 1}
-            </h3>
-            <p className="my-1 text-lg">{questions[index].text}</p>
-            <p className="my-1">{answer !== null ? answer : "Skipped"}</p>
-          </li>
-        ))}
+        {userAnswers.map((answer, index) => {
+          let cssAnswer = "my-1 font-bold";
+          if (answer === null) {
+            cssAnswer += " text-[#d1baf2]";
+          } else if (answer === questions[index].answers[0]) {
+            cssAnswer += " text-[#054e37]";
+          } else {
+            cssAnswer += " text-[#730b4b]";
+          }
+          return (
+            <li key={questions[index].id} className="my-8">
+              <h3 className="font-roboto-condensed rounded-full bg-[#2c203d] w-8 h-8 text-[#d8cde8] flex justify-center items-center text-lg mx-auto">
+                {index + 1}
+              </h3>
+              <p className="my-1 text-lg">{questions[index].text}</p>
+              <p className={cssAnswer}>
+                {answer !== null ? answer : "Skipped"}
+              </p>
+            </li>
+          );
+        })}
       </ol>
     </div>
   );

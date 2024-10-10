@@ -1,0 +1,3 @@
+export const TIME_OF_CHECK_CORRECT_ANSWER = 1000
+export const TIME_OF_FINISH_ANSWER = 2000;
+export const ONE_HUNDRED_PERCENT = 100;
