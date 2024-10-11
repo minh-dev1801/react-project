@@ -2,59 +2,76 @@ import Timer from "./Timer";
 import quesions from "../data/questions";
 import Answers from "./Answers";
 import { useEffect, useRef, useState } from "react";
-import {
-  TIME_OF_CHECK_CORRECT_ANSWER,
-  TIME_OF_FINISH_ANSWER,
-} from "../utils/constants";
+import { ONE_SECONDS, TEN_SECONDS, TWO_SECONDS } from "../utils/constants";
 
 const Question = ({ index, userAnswer, onChooseAnswer }) => {
   const [answer, setAnswer] = useState({
     content: "",
     isCorrect: null,
+    isCheck: null,
+    time: TEN_SECONDS,
   });
-  const timeoutIds = useRef([]);
+
+  const timeoutIds = useRef(new Set());
 
   useEffect(() => {
+    const currentTimeoutIds = timeoutIds.current;
     return () => {
-      console.log("Zo clear timeout!!!");
-
-      timeoutIds.current.forEach((timeoutId) => clearTimeout(timeoutId));
+      currentTimeoutIds.forEach((timeoutId) => clearTimeout(timeoutId));
+      currentTimeoutIds.clear();
     };
   }, []);
 
+  const setManagedTimeout = (callback, delay) => {
+    const timer = setTimeout(() => {
+      callback();
+      timeoutIds.current.delete(timer);
+    }, delay);
+    timeoutIds.current.add(timer);
+  };
+
   const handleChooseAnswer = (selectedAnswer) => {
-    setAnswer({ content: selectedAnswer, isCorrect: null });
+    setAnswer((prevAnswer) => ({
+      ...prevAnswer,
+      content: selectedAnswer,
+      isCheck: true,
+      time: ONE_SECONDS,
+    }));
     scheduleAnswerCheck(selectedAnswer);
   };
 
   const scheduleAnswerCheck = (selectedAnswer) => {
-    const timeoutId = setTimeout(() => {
+    setManagedTimeout(() => {
       const isCorrect = selectedAnswer === quesions[index].answers[0];
-      setAnswer({
-        content: selectedAnswer,
+      setAnswer((prevAnswer) => ({
+        ...prevAnswer,
         isCorrect,
-      });
+        isCheck: false,
+        time: TWO_SECONDS,
+      }));
       scheduleAnswerFinish(selectedAnswer);
-    }, TIME_OF_CHECK_CORRECT_ANSWER);
-
-    timeoutIds.current = [...timeoutIds.current, timeoutId];
+    }, ONE_SECONDS);
   };
 
   const scheduleAnswerFinish = (selectedAnswer) => {
-    const timeoutId = setTimeout(() => {
-      onChooseAnswer(selectedAnswer);
+    setManagedTimeout(() => {
+      if (selectedAnswer !== null) {
+        onChooseAnswer(selectedAnswer);
+      } else {
+        onChooseAnswer(null);
+      }
       setAnswer({
         content: "",
         isCorrect: null,
+        isCheck: null,
+        time: TEN_SECONDS,
       });
-    }, TIME_OF_FINISH_ANSWER);
-
-    timeoutIds.current = [...timeoutIds.current, timeoutId];
+    }, TWO_SECONDS);
   };
 
   return (
     <>
-      <Timer />
+      <Timer answer={answer} />
       <h2 className="mt-2 mb-10 text-2xl text-custom-text-answer font-roboto-condensed">
         {quesions[index].text}
       </h2>

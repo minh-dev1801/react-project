@@ -11,6 +11,18 @@
 }
 
 .custom-progress::-webkit-progress-value {
-  background-color: #9e5ef8;
+  background-color: #6cb7f5;
   border-radius: 24px;
+}
+
+.custom-progress.active-selected::-webkit-progress-value {
+  background-color: #f5a76c;
+}
+
+.custom-progress.active-correct::-webkit-progress-value {
+  background-color: #5af59d;
+}
+
+.custom-progress.active-incorrect::-webkit-progress-value {
+  background-color: #f55a98;
 }
