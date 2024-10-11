@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { HUNDRED_MILLISECONDS } from "../utils/constants";
+import PropTypes from "prop-types";
 
-const Timer = ({ answer }) => {
-  const { isCorrect, isCheck, time } = answer;
+const Timer = ({ answer, onChooseAnswer, indexAnswer }) => {
+  const { isCorrect, isCheck, time, content } = answer;
   const [remainingTime, setRemainingTime] = useState(time);
   const [progress, setProgress] = useState({
     maxValue: time,
@@ -33,7 +34,7 @@ const Timer = ({ answer }) => {
       default:
         break;
     }
-  }, [isCorrect, isCheck, time]);
+  }, [isCorrect, isCheck, time, indexAnswer]);
 
   useEffect(() => {
     timerIdRef.current = setInterval(() => {
@@ -50,15 +51,34 @@ const Timer = ({ answer }) => {
     return () => {
       clearInterval(timerIdRef.current);
     };
-  }, [isCorrect]);
+  }, [isCorrect, isCheck, time, indexAnswer]);
+
+  useEffect(() => {
+    if (remainingTime === 0 && content === "") {
+      onChooseAnswer(null);
+    }
+  }, [remainingTime, content, onChooseAnswer]);
 
   return (
-    <progress
-      value={remainingTime}
-      max={progress.maxValue}
-      className={`custom-progress ${progress.active}`}
-    />
+    <>
+      <progress
+        value={remainingTime}
+        max={progress.maxValue}
+        className={`custom-progress ${progress.active}`}
+      />
+    </>
   );
+};
+
+Timer.propTypes = {
+  answer: PropTypes.shape({
+    content: PropTypes.string,
+    isCorrect: PropTypes.bool,
+    isCheck: PropTypes.bool,
+    time: PropTypes.number,
+  }),
+  onChooseAnswer: PropTypes.func,
+  indexAnswer: PropTypes.number,
 };
 
 export default Timer;

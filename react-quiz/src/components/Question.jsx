@@ -3,15 +3,15 @@ import quesions from "../data/questions";
 import Answers from "./Answers";
 import { useEffect, useRef, useState } from "react";
 import { ONE_SECONDS, TEN_SECONDS, TWO_SECONDS } from "../utils/constants";
+import PropTypes from "prop-types";
 
-const Question = ({ index, userAnswer, onChooseAnswer }) => {
+const Question = ({ index, onChooseAnswer }) => {
   const [answer, setAnswer] = useState({
     content: "",
     isCorrect: null,
     isCheck: null,
     time: TEN_SECONDS,
   });
-
   const timeoutIds = useRef(new Set());
 
   useEffect(() => {
@@ -42,7 +42,9 @@ const Question = ({ index, userAnswer, onChooseAnswer }) => {
 
   const scheduleAnswerCheck = (selectedAnswer) => {
     setManagedTimeout(() => {
+      console.log(quesions[index].answers[0]);
       const isCorrect = selectedAnswer === quesions[index].answers[0];
+
       setAnswer((prevAnswer) => ({
         ...prevAnswer,
         isCorrect,
@@ -55,11 +57,7 @@ const Question = ({ index, userAnswer, onChooseAnswer }) => {
 
   const scheduleAnswerFinish = (selectedAnswer) => {
     setManagedTimeout(() => {
-      if (selectedAnswer !== null) {
-        onChooseAnswer(selectedAnswer);
-      } else {
-        onChooseAnswer(null);
-      }
+      onChooseAnswer(selectedAnswer);
       setAnswer({
         content: "",
         isCorrect: null,
@@ -71,7 +69,11 @@ const Question = ({ index, userAnswer, onChooseAnswer }) => {
 
   return (
     <>
-      <Timer answer={answer} />
+      <Timer
+        answer={answer}
+        onChooseAnswer={onChooseAnswer}
+        indexAnswer={index}
+      />
       <h2 className="mt-2 mb-10 text-2xl text-custom-text-answer font-roboto-condensed">
         {quesions[index].text}
       </h2>
@@ -83,6 +85,11 @@ const Question = ({ index, userAnswer, onChooseAnswer }) => {
       />
     </>
   );
+};
+
+Question.propTypes = {
+  index: PropTypes.number,
+  onChooseAnswer: PropTypes.func,
 };
 
 export default Question;

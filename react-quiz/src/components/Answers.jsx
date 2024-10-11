@@ -1,14 +1,21 @@
 import classNames from "classnames";
-import React from "react";
+import { useRef } from "react";
+import fisherYatesShuffle from "../utils/fisherYatesShuffle";
+import PropTypes from "prop-types";
 
 const Answers = ({ answers, selectedAnswer, onChooseAnswer, isCorrect }) => {
   const baseClasses =
     "w-full py-3 px-8 rounded-3xl text-sm cursor-pointer transition-colors duration-200 ease-in-out";
   const hasSelectedAnswer = !!selectedAnswer;
 
+  const sortArrayRef = useRef(null);
+  if (!hasSelectedAnswer) {
+    sortArrayRef.current = fisherYatesShuffle([...answers]);
+  }
+
   return (
     <ul className="flex flex-col gap-2">
-      {answers.map((answer) => {
+      {sortArrayRef.current.map((answer) => {
         const isSelected = selectedAnswer === answer;
 
         const classes = classNames(baseClasses, {
@@ -39,6 +46,13 @@ const Answers = ({ answers, selectedAnswer, onChooseAnswer, isCorrect }) => {
       })}
     </ul>
   );
+};
+
+Answers.propTypes = {
+  answers: PropTypes.arrayOf(PropTypes.string),
+  selectedAnswer: PropTypes.string,
+  onChooseAnswer: PropTypes.func,
+  isCorrect: PropTypes.bool,
 };
 
 export default Answers;

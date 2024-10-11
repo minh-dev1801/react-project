@@ -28,6 +28,21 @@ export default {
         "custom-bg-answer": "#6cb7f5",
         "custom-hover-bg-answer": "#9d5af5",
       },
+      animation: {
+        "slide-in-bottom": "slide-in-bottom 0.7s ease-out forwards",
+      },
+      keyframes: {
+        "slide-in-bottom": {
+          "0%": {
+            transform: "translateY(100%)",
+            opacity: "0",
+          },
+          "100%": {
+            transform: "translateY(0)",
+            opacity: "1",
+          },
+        },
+      },
     },
   },
   plugins: [],

@@ -1,6 +1,7 @@
 import quizLogo from "../assets/quiz-complete.png";
 import calculateAnswerPercentage from "../utils/calculateAnswerPercentage";
 import questions from "../data/questions";
+import PropTypes from "prop-types";
 const ONE_HUNDRED_PERCENT = 100;
 
 const Summary = ({ userAnswers }) => {
@@ -16,7 +17,7 @@ const Summary = ({ userAnswers }) => {
     ONE_HUNDRED_PERCENT - skippedAnswerPercentage - correctAnswerPercentage;
 
   return (
-    <div className="w-[40%] mx-auto my-8 p-8 bg-custom-summary shadow-custom-summary rounded-lg text-custom-text-summary-content text-center">
+    <div className="w-[40%] mx-auto my-8 p-8 bg-custom-summary shadow-custom-summary rounded-lg text-custom-text-summary-content text-center animate-slide-in-bottom">
       <img
         src={quizLogo}
         alt="Quiz Logo"
@@ -25,28 +26,28 @@ const Summary = ({ userAnswers }) => {
       <h2 className="uppercase font-roboto-condensed text-5xl text-custom-text-summary font-bold">
         Quiz Completed!
       </h2>
-      <div className="border-b-2 border-[#594276] flex w-[60%] my-8 mx-auto pb-8 gap-12">
-        <p className="flex flex-col">
+      <div className="border-b-2 border-[#594276] flex flex-col justify-center xl:flex-row my-8 mx-auto pb-8 gap-12 w-full xl:w-3/5">
+        <p className="flex flex-1 flex-col gap-2">
           <span className="font-roboto-condensed text-[#594276] text-5xl">
             {skippedAnswerPercentage}%
           </span>
-          <span className="uppercase font-roboto-condensed text-[#30273a] text-sm tracking-[0.1rem] mt-2 mr-3">
+          <span className="uppercase font-roboto-condensed text-[#30273a] text-sm tracking-[0.1rem]">
             skipped
           </span>
         </p>
-        <p className="flex flex-col">
+        <p className="flex flex-1 flex-col gap-2">
           <span className="font-roboto-condensed text-[#594276] text-5xl">
             {correctAnswerPercentage}%
           </span>
-          <span className="uppercase font-roboto-condensed text-[#30273a] text-sm tracking-[0.1rem] mt-2">
+          <span className="uppercase font-roboto-condensed text-[#30273a] text-sm tracking-[0.1rem]">
             answered correctly
           </span>
         </p>
-        <p className="flex flex-col">
+        <p className="flex flex-1 flex-col gap-2">
           <span className="font-roboto-condensed text-[#594276] text-5xl">
             {incorrectAnswerPercentage}%
           </span>
-          <span className="uppercase font-roboto-condensed text-[#30273a] text-sm tracking-[0.1rem] mt-2">
+          <span className="uppercase font-roboto-condensed text-[#30273a] text-sm tracking-[0.1rem]">
             answered incorrectly
           </span>
         </p>
@@ -76,6 +77,10 @@ const Summary = ({ userAnswers }) => {
       </ol>
     </div>
   );
+};
+
+Summary.propTypes = {
+  userAnswers: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default Summary;
