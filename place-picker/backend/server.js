@@ -10,7 +10,7 @@ import userPlacesRoutes from "./routes/userPlacesRoutes.js";
 const app = express();
 
 const PORT = process.env.PORT || 5000;
-const CORS_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:3000";
+const CORS_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:5174";
 
 app.use(
   cors({
