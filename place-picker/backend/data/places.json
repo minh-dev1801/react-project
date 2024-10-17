@@ -1,0 +1,182 @@
+[
+  {
+    "id": "1",
+    "title": "Vịnh Hạ Long",
+    "image": {
+      "src": "ha-long-bay.jpg",
+      "alt": "Khung cảnh hùng vĩ của Vịnh Hạ Long với hàng ngàn đảo đá vôi nổi lên trên mặt nước xanh ngắt."
+    },
+    "latitude": 20.9101,
+    "longitude": 107.1839
+  },
+  {
+    "id": "2",
+    "title": "Phố cổ Hội An",
+    "image": {
+      "src": "hoi-an-ancient-town.jpg",
+      "alt": "Cảnh quan Phố cổ Hội An vào ban đêm với ánh đèn lồng rực rỡ và kiến trúc truyền thống."
+    },
+    "latitude": 15.8801,
+    "longitude": 108.3380
+  },
+  {
+    "id": "3",
+    "title": "Ruộng bậc thang Sapa",
+    "image": {
+      "src": "sapa-terrain.jpg",
+      "alt": "Những ruộng bậc thang xanh mướt của Sapa nằm dưới chân núi Hoàng Liên Sơn."
+    },
+    "latitude": 22.3392,
+    "longitude": 103.8390
+  },
+  {
+    "id": "4",
+    "title": "Cố đô Huế",
+    "image": {
+      "src": "hue-imperial-city.jpg",
+      "alt": "Kinh thành Huế với những kiến trúc hoàng gia và cầu Tràng Tiền nổi bật."
+    },
+    "latitude": 16.4637,
+    "longitude": 107.5909
+  },
+  {
+    "id": "5",
+    "title": "Vườn quốc gia Phong Nha-Kẻ Bàng",
+    "image": {
+      "src": "phong-nha-national-park.jpg",
+      "alt": "Hang Sơn Đoòng, hang động lớn nhất thế giới, nằm trong Vườn quốc gia Phong Nha-Kẻ Bàng."
+    },
+    "latitude": 17.5903,
+    "longitude": 106.2236
+  },
+  {
+    "id": "6",
+    "title": "Đồng bằng sông Cửu Long",
+    "image": {
+      "src": "mekong-delta.jpg",
+      "alt": "Cảnh quan sông Cửu Long với những cánh đồng lúa bạt ngàn và các kênh rạch tấp nập."
+    },
+    "latitude": 10.0307,
+    "longitude": 105.8048
+  },
+  {
+    "id": "7",
+    "title": "Bãi biển Đà Nẵng",
+    "image": {
+      "src": "da-nang-beach.jpg",
+      "alt": "Bãi biển Mỹ Khê ở Đà Nẵng với cát trắng mịn và làn nước trong xanh."
+    },
+    "latitude": 16.0544,
+    "longitude": 108.2022
+  },
+  {
+    "id": "8",
+    "title": "Nha Trang",
+    "image": {
+      "src": "nha-trang.jpg",
+      "alt": "Cảnh biển Nha Trang với những tòa nhà cao tầng và bãi biển dài."
+    },
+    "latitude": 12.2388,
+    "longitude": 109.1967
+  },
+  {
+    "id": "9",
+    "title": "Đà Lạt",
+    "image": {
+      "src": "da-lat.jpg",
+      "alt": "Hồ Xuân Hương ở Đà Lạt với những hàng cây xanh mát và kiến trúc Pháp cổ kính."
+    },
+    "latitude": 11.9404,
+    "longitude": 108.4383
+  },
+  {
+    "id": "10",
+    "title": "Thành phố Hồ Chí Minh",
+    "image": {
+      "src": "ho-chi-minh-city.jpg",
+      "alt": "Cột Chí Minh và trung tâm tài chính sầm uất của Thành phố Hồ Chí Minh."
+    },
+    "latitude": 10.8231,
+    "longitude": 106.6297
+  },
+  {
+    "id": "11",
+    "title": "Khu phố cổ Hà Nội",
+    "image": {
+      "src": "hanoi-old-quarter.jpg",
+      "alt": "Phố cổ Hà Nội với những con phố nhỏ nhộn nhịp và kiến trúc cổ kính."
+    },
+    "latitude": 21.0285,
+    "longitude": 105.8542
+  },
+  {
+    "id": "12",
+    "title": "Đảo Phú Quốc",
+    "image": {
+      "src": "phu-quoc-island.jpg",
+      "alt": "Bãi Sao trên đảo Phú Quốc với cát trắng mịn và nước biển trong xanh."
+    },
+    "latitude": 10.2915,
+    "longitude": 103.9844
+  },
+  {
+    "id": "13",
+    "title": "Thánh địa Mỹ Sơn",
+    "image": {
+      "src": "my-son-sanctuary.jpg",
+      "alt": "Các công trình đền đài Mỹ Sơn với kiến trúc Chăm cổ kính."
+    },
+    "latitude": 15.8775,
+    "longitude": 108.2755
+  },
+  {
+    "id": "14",
+    "title": "Vịnh Bái Tử Long",
+    "image": {
+      "src": "bai-tu-long-bay.jpg",
+      "alt": "Vịnh Bái Tử Long với cảnh quan thiên nhiên hùng vĩ và những hòn đảo đá vôi."
+    },
+    "latitude": 20.9000,
+    "longitude": 107.1000
+  },
+  {
+    "id": "15",
+    "title": "Đảo Cát Bà",
+    "image": {
+      "src": "cat-ba-island.jpg",
+      "alt": "Đảo Cát Bà với những bãi biển đẹp và rừng nguyên sinh."
+    },
+    "latitude": 20.9000,
+    "longitude": 107.1670
+  },
+  {
+    "id": "16",
+    "title": "Thung lũng Mai Châu",
+    "image": {
+      "src": "mai-chau-valley.jpg",
+      "alt": "Thung lũng Mai Châu với những cánh đồng lúa bạt ngàn và nhà sàn của người dân tộc."
+    },
+    "latitude": 20.4647,
+    "longitude": 105.8222
+  },
+  {
+    "id": "17",
+    "title": "Quần đảo Côn Đảo",
+    "image": {
+      "src": "con-dao-islands.jpg",
+      "alt": "Biển xanh ngắt và bãi biển hoang sơ tại quần đảo Côn Đảo."
+    },
+    "latitude": 8.5258,
+    "longitude": 106.9673
+  },
+  {
+    "id": "18",
+    "title": "Thác Bản Giốc",
+    "image": {
+      "src": "ban-gioc-waterfall.jpg",
+      "alt": "Thác Bản Giốc hùng vĩ nằm trên biên giới Việt - Trung với dòng nước mạnh mẽ chảy xuống thung lũng."
+    },
+    "latitude": 22.2543,
+    "longitude": 106.4664
+  }
+]
