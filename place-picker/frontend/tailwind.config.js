@@ -20,7 +20,7 @@ export default {
       },
       animation: {
         "slide-up-fade-in": "slide-up-fade-in 0.3s ease-out forwards",
-      },
+      }
     },
   },
   plugins: [],

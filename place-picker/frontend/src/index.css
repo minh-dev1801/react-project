@@ -1,5 +1,6 @@
 @import "./styles/general.css";
 @import "./styles/button.css";
+@import "./styles/modal.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
