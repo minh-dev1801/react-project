@@ -5,6 +5,13 @@ const userPlacesSchema = Joi.object({
   places: Joi.array().items(
     Joi.object({
       id: Joi.string().required(),
+      title: Joi.string().required(),
+      image: Joi.object({
+        src: Joi.string().required(),
+        alt: Joi.string().required(),
+      }),
+      latitude: Joi.number().required(),
+      longitude: Joi.number().required(),
     })
   ),
 });

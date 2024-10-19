@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from "react";
+import Header from "./components/Header";
+import Places from "./components/Places";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAvailablePlacesThunk } from "./store/placesSlice";
+import {
+  fetchUserPlacesThunk,
+  updateUserPlacesThunk,
+} from "./store/userPlacesSlice";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const { places } = useSelector((state) => state.places);
+  const { userPlaces } = useSelector((state) => state.userPlaces);
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAvailablePlacesThunk());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchUserPlacesThunk());
+  }, [dispatch]);
+
+  const handleSelectedPlace = (placeId) => {
+    const isPlaceSelected = userPlaces.some((place) => place.id === placeId);
+    if (!isPlaceSelected) {
+      const place = places.find((place) => place.id === placeId);
+      if (place) {
+        const updatePlaces = [...userPlaces, place];
+        dispatch(updateUserPlacesThunk(updatePlaces));
+      }
+    }
+  };
+  const handleDeletePlace = (placeId) => {
+    const updatePlaces = userPlaces.filter((place) => place.id !== placeId);
+    dispatch(updateUserPlacesThunk(updatePlaces));
+  };
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      <Places
+        title="Du lịch trong tôi: Những Trải Nghiệm Đáng Nhớ"
+        places={userPlaces}
+        subTitle="Lựa chọn địa điểm du lịch muốn đi trong danh sách bên dưới."
+        onSelectedPlace={handleDeletePlace}
+      />
+      <Places
+        title="Khám Phá Những Điểm Đến Du Lịch Hấp Dẫn Nhất"
+        places={places}
+        onSelectedPlace={handleSelectedPlace}
+      />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

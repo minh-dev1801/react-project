@@ -1,0 +1,12 @@
+html {
+  
+}
+
+body {
+  font-family: "Bricolage Grotesque", sans-serif ;
+  line-height: 1.5 ;
+  color: #defaf8;
+  background: linear-gradient(180deg, #1f1c2c 0%, #1f1c2c 100%);
+  padding: 2rem;
+
+}
