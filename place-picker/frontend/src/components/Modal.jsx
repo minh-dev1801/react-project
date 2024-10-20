@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import ProgressBar from "./ProgressBar";
 
 const Modal = ({ place, open, onClose, onDeletePlace }) => {
   const dialogRef = useRef();
@@ -20,19 +21,22 @@ const Modal = ({ place, open, onClose, onDeletePlace }) => {
       <h1 className="text-xl font-bold text-red-900">
         Bạn có chắc xóa địa điểm du lịch này ?
       </h1>
-      {place && <p className="text-[1.15rem] text-red-800 mt-4">{place.title}</p>}
-
-      <div className="flex justify-end gap-4 mt-8">
-        
-        <button className="text-lg text-red-800" onClick={onClose}>
-          Hủy
-        </button>
-        <button
-          className="text-lg px-[1rem] py-[0.1rem] bg-red-600 hover:bg-red-800 rounded text-white transition-colors shadow-lg"
-          onClick={onDeletePlace}
-        >
-          Xóa
-        </button>
+      {place && (
+        <p className="text-[1.15rem] text-red-800 mt-4">{place.title}</p>
+      )}
+      <div className="flex items-center justify-between mt-8">
+        {open && <ProgressBar onDelete={onDeletePlace} onClose={onClose} />}
+        <div className="flex gap-4">
+          <button className="text-lg text-red-800" onClick={onClose}>
+            Hủy
+          </button>
+          <button
+            className="text-lg px-[1rem] py-[0.1rem] bg-red-600 hover:bg-red-800 rounded text-white transition-colors shadow-lg"
+            onClick={onDeletePlace}
+          >
+            Xóa
+          </button>
+        </div>
       </div>
     </dialog>,
     document.getElementById("modal")

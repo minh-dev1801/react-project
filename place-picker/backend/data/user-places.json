@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "id": "3",
+    "title": "Ruộng bậc thang Sapa",
+    "image": {
+      "src": "sapa-terrain.jpg",
+      "alt": "Những ruộng bậc thang xanh mướt của Sapa nằm dưới chân núi Hoàng Liên Sơn."
+    },
+    "latitude": 22.3392,
+    "longitude": 103.839
+  }
+]

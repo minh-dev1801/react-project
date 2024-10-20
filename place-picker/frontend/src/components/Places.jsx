@@ -1,12 +1,19 @@
 import PropTypes from "prop-types";
 
-const Places = ({ title, places, onSelectedPlace, subTitle }) => {
+const Places = ({ title, places, onSelectedPlace, subTitle, isFetching }) => {
   return (
     <section className="max-w-[85rem] mx-auto my-8 border-2 border-[#0d373e] p-8 rounded-lg">
       <h2 className="text-center text-2xl text-[#8feeff] mb-4">{title}</h2>
-      {places.length === 0 && (
+      {places.length === 0 && !isFetching && (
         <h3 className="text-center text-[1rem]">{subTitle}</h3>
       )}
+
+      {places.length === 0 && isFetching && (
+        <h3 className="text-center text-[1rem]">
+          Dữ liệu đang được cập nhật ...
+        </h3>
+      )}
+
       {places.length !== 0 && (
         <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 my-8 mx-auto max-w-[80rem]">
           {places.map((place) => (
@@ -40,6 +47,7 @@ Places.propTypes = {
   places: PropTypes.array,
   onSelectedPlace: PropTypes.func,
   subTitle: PropTypes.string,
+  isFetching: PropTypes.bool,
 };
 
 export default Places;

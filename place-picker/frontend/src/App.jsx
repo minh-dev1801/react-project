@@ -12,7 +12,7 @@ import {
 import Modal from "./components/Modal";
 
 const App = () => {
-  const { places } = useSelector((state) => state.places);
+  const { places, isFetching } = useSelector((state) => state.places);
   const { userPlaces, selectedPlace, modalIsOpen } = useSelector(
     (state) => state.userPlaces
   );
@@ -37,6 +37,7 @@ const App = () => {
       }
     }
   };
+
   const handleOpenModal = (placeId) => {
     const place = userPlaces.find((place) => place.id === placeId);
     dispatch(openModal(place));
@@ -51,22 +52,29 @@ const App = () => {
   };
   return (
     <>
-      <Modal
-        place={selectedPlace}
-        open={modalIsOpen}
-        onClose={() => dispatch(closeModal())}
-        onDeletePlace={handleDeletePlace}
-      />
+      {modalIsOpen && (
+        <Modal
+          place={selectedPlace}
+          open={modalIsOpen}
+          onClose={() => dispatch(closeModal())}
+          onDeletePlace={handleDeletePlace}
+        />
+      )}
+
       <Header />
+
       <Places
         title="Du lịch trong tôi: Những Trải Nghiệm Đáng Nhớ"
         places={userPlaces}
+        isFetching={isFetching}
         subTitle="Lựa chọn địa điểm du lịch muốn đi trong danh sách bên dưới."
         onSelectedPlace={handleOpenModal}
       />
       <Places
         title="Khám Phá Những Điểm Đến Du Lịch Hấp Dẫn Nhất"
         places={places}
+        isFetching={isFetching}
+        subTitle="Không có địa điểm du lịch."
         onSelectedPlace={handleSelectedPlace}
       />
     </>

@@ -1,0 +1,2 @@
+export const TIME_DEFAULT_PROGRESS = 3000;
+export const TIME_CHANGE_PROGRESS = 10;

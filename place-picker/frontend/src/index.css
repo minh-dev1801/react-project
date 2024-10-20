@@ -1,6 +1,7 @@
 @import "./styles/general.css";
 @import "./styles/button.css";
 @import "./styles/modal.css";
+@import "./styles/progress.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
