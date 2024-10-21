@@ -1,21 +1,24 @@
 # Elegant Wardrobe
 
-![Demo](https://via.placeholder.com/800x400) <!-- Replace this link with an actual screenshot of your project -->
+![Demo header](./images/web-capture-top.PNG)
+![Demo footer](./images/web-capture-bottom.PNG)
 
-## Introduction
+## Giới thiệu
 
-Elegant Wardrobe is a theme with 2 features: add products to cart and increase the number of products in cart.
+Elegant Wardrobe là một theme với 2 tính năng: thêm sản phẩm vào giỏ hàng và tăng số lượng sản phẩm trong giỏ.
 
-## Features
+## Tính năng
 
-- **View Product**: Display product on screen.
-- **Add to Cart**: Add product to cart.
-- **Increase Quantity**: Increase quantity of products in cart.
-- **Cart Modal**: Display cart modal when adding product quantity.
+- **Xem sản phẩm**: Hiển thị sản phẩm trên màn hình.
+- **Thêm vào giỏ hàng**: Thêm sản phẩm vào giỏ hàng.
+- **Tăng số lượng**: Tăng số lượng sản phẩm trong giỏ.
+- **Giỏ hàng Modal**: Hiển thị modal giỏ hàng khi thêm số lượng sản phẩm.
+- **Tìm kiếm**: Khi tiềm kiếm tên sản phẩm, danh sách sản phẩm sẽ hiện ra màn hình.
+- **Phân trang**: Mỗi trang sẽ có 8 sản phẩm và phân trang là phân trang động.
 
-## Installation
+## Cài đặt
 
-Follow these steps to set up and run the project locally:
+Thực hiện các bước sau để thiết lập và chạy dự án cục bộ:
 
 1. **Clone this repository:**
    ```bash
@@ -38,13 +41,15 @@ Follow these steps to set up and run the project locally:
 
 4. **Open the app:**
    ```bash
-   Go to http://localhost:3000 in your browser.
+   Go to http://localhost:5173 in your browser.
    ```
 
-## Technologies
+## Công nghệ sử dụng
 
-Hooks and Features Implemented:
-
-- **useState**: Product management and shopping cart management.
-- **forwardRef, useImperativeHandle, useRef**: Used to create modal cart component.
-- **Tailwind CSS**: The project UI is written using the Tailwind CSS library.
+- **useState**: Quản lý sản phẩm và quản lý giỏ hàng.
+- **forwardRef, useImperativeHandle, useRef**: Được sử dụng để tạo component modal giỏ hàng.
+- **Tailwind CSS**: Giao diện người dùng của dự án được viết bằng thư viện Tailwind CSS.
+- **Pagination**: Phân trang được tạo là phân trang động.
+- **Search**: Tìm kiếm theo tên sản phẩm
+- **Data**: Dữ liệu sản phẩm được lưu trong file data.js
+- **State**: Quản lý các state của dự án bằng Redux tool kit.
