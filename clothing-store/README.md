@@ -21,13 +21,16 @@ Elegant Wardrobe là một theme với 2 tính năng: thêm sản phẩm vào gi
 Thực hiện các bước sau để thiết lập và chạy dự án cục bộ:
 
 1. **Clone this repository:**
+
    ```bash
-   git clone https://github.com/minh-dev1801/elegant-wardrobe.git
+   git clone https://github.com/minh-dev1801/react-project.git
 
    ```
-2. **Install dependencies:**
+
+2. **Go to project:**
 
    ```bash
+   cd clothing-store
    npm install
 
    ```
@@ -35,7 +38,7 @@ Thực hiện các bước sau để thiết lập và chạy dự án cục b�
 3. **Start the application:**
 
    ```bash
-   npm run dev
+   npm run start
 
    ```
 
