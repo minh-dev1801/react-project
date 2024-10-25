@@ -3,48 +3,43 @@ import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
-import compression from "compression";
-
-import placesRoutes from "./routes/placesRoutes.js";
-import userPlacesRoutes from "./routes/userPlacesRoutes.js";
 
 const app = express();
-
 const PORT = process.env.PORT || 5000;
 const CORS_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:5173";
 
-app.use(
-  cors({
-    origin: CORS_ORIGIN,
-    methods: ["GET", "PUT"],
-    allowedHeaders: ["Content-Type"],
-  })
-);
-
-app.use(express.json());
-app.use(compression());
-app.use(morgan("dev"));
-app.use(helmet());
-
-app.use(
-  express.static("public", {
-    setHeaders: (res, path) => {
-      res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
-    },
-  })
-);
-
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
+  windowMs: 1 * 60 * 1000,
+  max: 5,
+  handler: (req, res) => {
+    res
+      .status(429)
+      .json({
+        message:
+          "Bạn đã vượt quá giới hạn yêu cầu. Vui lòng thử lại sau 1 phút.",
+      });
+  },
 });
 
 app.use(limiter);
 
-app.use("/places", placesRoutes);
-app.use("/user-places", userPlacesRoutes);
+app.use(
+  cors({
+    origin: CORS_ORIGIN,
+    allowedHeaders: ["Content-Type"],
+  })
+);
 
-app.use((req, res, next) => {
+app.use(express.static("public"));
+app.use(express.json());
+app.use(morgan("dev"));
+app.use(helmet());
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
 
