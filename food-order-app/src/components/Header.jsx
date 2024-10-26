@@ -1,18 +1,19 @@
 import loginImg from "../assets/logo.jpg";
+import Button from "./UI/Button";
 
 const Header = () => {
   return (
-    <header className="flex flex-row justify-between w-4/5 mx-auto py-8">
+    <header className="container flex flex-row justify-between">
       <div className="flex flex-row items-center gap-4">
         <img
-          className="w-[3rem] h-[3rem] rounded-full border-[#ffc404]"
+          className="h-[3rem] w-[3rem] rounded-full border-[#ffc404]"
           src={loginImg}
           alt="A restaurant"
         />
-        <h1 className="uppercase text-[#ffc404] text-2xl">ReactFood</h1>
+        <h1 className="text-2xl uppercase text-[#ffc404]">ReactFood</h1>
       </div>
       <nav>
-        <button>Cart (0)</button>
+        <Button textOnly>Cart (0)</Button>
       </nav>
     </header>
   );
