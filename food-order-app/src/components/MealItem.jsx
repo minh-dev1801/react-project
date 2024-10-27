@@ -1,8 +1,16 @@
 import PropTypes from "prop-types";
 import { currencyFormatter } from "../util/formatting";
 import Button from "./UI/Button";
+import { useContext } from "react";
+import CartContext from "../store/CartContext";
 
 const MealItem = ({ meal }) => {
+  const cartCtx = useContext(CartContext);
+
+  const handleAddMealToCart = () => {
+    cartCtx.addItem(meal);
+  };
+
   return (
     <li className="overflow-hidden rounded-lg bg-[#1d1a16] pb-4 text-center shadow-md">
       <article className="flex h-full flex-col justify-between">
@@ -11,7 +19,7 @@ const MealItem = ({ meal }) => {
           src={`http://localhost:5000/${meal.image}`}
           alt={meal.name}
         />
-        <div className="px-2">
+        <div className="px-4">
           <h3 className="my-3 text-xl font-bold text-white">{meal.name}</h3>
 
           <span className="inline-block rounded-md bg-[#312c1d] px-8 py-2 text-xs font-bold text-[#ffc404]">
@@ -21,7 +29,7 @@ const MealItem = ({ meal }) => {
           <p className="my-4 text-sm text-white">{meal.description}</p>
         </div>
         <p>
-          <Button>Add to Cart</Button>
+          <Button onClick={handleAddMealToCart}>Add to Cart</Button>
         </p>
       </article>
     </li>

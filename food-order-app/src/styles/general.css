@@ -8,17 +8,9 @@ body {
   min-height: 100vh;
 }
 
-.container {
-  max-width: 80%;
+.cus-conten {
+  width: 90%;
+  max-width: 75rem;
   margin: 0 auto;
   padding: 2rem 0;
-}
-
-.meals {
-  width: 90%;
-  max-width: 70rem;
-  margin: 2rem auto;
-  padding: 1rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 }
