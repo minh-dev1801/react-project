@@ -19,13 +19,33 @@ const Checkout = () => {
     userProgressCtx.hideCheckout();
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const fd = new FormData(event.target);
+    const customerData = Object.fromEntries(fd.entries());
+
+    fetch("http://localhost:5000/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        order: {
+          items: cartCtx.items,
+          customer: customerData,
+        },
+      }),
+    });
+  };
+
   return (
-    <Modal open={userProgressCtx.progress === "checkout"}>
-      <form action="">
+    <Modal open={userProgressCtx.progress === "checkout"} onClose={handleClose}>
+      <form onSubmit={handleSubmit}>
         <h2 className="mb-4 text-xl font-bold">Checkout</h2>
         <p>Total Amount: {currencyFormatter.format(cartTotal)}</p>
 
-        <Input id="full-name" type="text" label="Full Name" required />
+        <Input id="name" type="text" label="Full Name" required />
         <Input id="email" type="email" label="E-Mail Address" required />
         <Input id="street" type="text" label="Street" required />
         <div className="flex justify-start gap-4">

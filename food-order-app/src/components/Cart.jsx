@@ -24,7 +24,10 @@ const Cart = () => {
   };
 
   return (
-    <Modal open={userProgressCtx.progress === "cart"}>
+    <Modal
+      open={userProgressCtx.progress === "cart"}
+      onClose={userProgressCtx.progress === "cart" ? handleCloseCart : null}
+    >
       <h2 className="mb-4 text-xl font-bold">Your Cart</h2>
       <ul className="my-2">
         {cartCtx.items.map((item) => (
