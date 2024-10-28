@@ -18,7 +18,7 @@ const Input = ({ label, id, ...props }) => {
 
 Input.propTypes = {
   label: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Input;
