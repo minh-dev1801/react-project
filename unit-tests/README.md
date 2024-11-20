@@ -4,14 +4,14 @@
 
 ## Introduction
 
-**Unit Tests** là một dự án minh họa việc triển khai kiểm thử đơn vị (unit testing) trong React. Dự án này trình bày các phương pháp và kỹ thuật viết unit test hiệu quả cho các component và custom hooks trong ứng dụng React. Thông qua các ví dụ thực tế, bạn sẽ học được cách viết và tổ chức unit test một cách có hệ thống.
+**Unit Tests** is a project demonstrating the implementation of unit testing in React. This project presents methods and techniques for writing effective unit tests for React components and custom hooks. Through practical examples, you will learn how to write and organize unit tests systematically.
 
-Các tính năng chính được trình bày:
+Key features presented:
 
-- Viết unit test cho React components 
-- Kiểm thử custom hooks và logic nghiệp vụ
-- Sử dụng Jest và React Testing Library
-- Mock functions và dependencies trong testing
+- Writing unit tests for React components
+- Testing custom hooks and business logic
+- Using Jest and React Testing Library
+- Mocking functions and dependencies in testing
 
 ## Installation
 
@@ -36,20 +36,20 @@ Follow the steps below to set up and run the project locally:
 ## Technologies Used
 
 1. **Testing Libraries & Tools**: 
-   - Jest: Framework testing chính
-   - React Testing Library: Thư viện testing cho React components
+   - Jest: Main testing framework
+   - React Testing Library: Testing library for React components
    - @testing-library/hooks: Testing custom hooks
-   - @testing-library/user-event: Mô phỏng tương tác người dùng
+   - @testing-library/user-event: Simulate user interactions
 
 2. **Testing Patterns & Approaches**: 
-   - Component Testing: Kiểm thử render output và user interactions
-   - Hook Testing: Kiểm thử custom hooks độc lập
-   - Integration Testing: Kiểm thử tương tác giữa các components
-   - Mock Testing: Mô phỏng API calls và external dependencies
+   - Component Testing: Test render output and user interactions
+   - Hook Testing: Test custom hooks independently
+   - Integration Testing: Test interactions between components
+   - Mock Testing: Simulate API calls and external dependencies
 
 3. **Testing Best Practices**:
    - Arrange-Act-Assert pattern
-   - Test cases độc lập và có thể tái sử dụng
+   - Independent and reusable test cases
    - Example:
      ```jsx
      describe('ProductComponent', () => {
@@ -68,8 +68,8 @@ Follow the steps below to set up and run the project locally:
 
 4. **Testing Coverage & Quality**:
    - Jest coverage reports
-   - Unit test cho critical business logic
-   - Integration tests cho user flows
+   - Unit tests for critical business logic
+   - Integration tests for user flows
    - Example configuration:
      ```jsx
      // jest.config.js
@@ -89,6 +89,6 @@ Follow the steps below to set up and run the project locally:
      };
      ```
    - Benefits:
-     - Phát hiện lỗi sớm trong quá trình phát triển
-     - Đảm bảo chất lượng code
-     - Tài liệu hóa hành vi của ứng dụng
+     - Early detection of errors during development
+     - Ensure code quality
+     - Document application behavior
